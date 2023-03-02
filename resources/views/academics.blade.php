@@ -21,14 +21,14 @@
                 <x-jet-section-border />
 
 
-            {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.two-factor-authentication-form')
+                    @livewire('entrepreneurship')
                 </div>
 
                 <x-jet-section-border />
-            @endif
-            @if(Route::currentRouteName()!= 'admin.dashboard')
+
+            {{-- @if(Route::currentRouteName()!= 'admin.dashboard')
             <div class="mt-10 sm:mt-0">
                 @livewire('profile.logout-other-browser-sessions-form')
             </div>
@@ -40,7 +40,7 @@
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.delete-user-form')
                 </div>
-            @endif --}}
+            @endif --}} --}}
         </div>
     </div>
 </x-app-layout>

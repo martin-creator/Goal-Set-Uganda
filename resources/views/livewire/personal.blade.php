@@ -27,12 +27,6 @@
                 <x-jet-input-error for="stream" class="mt-2" />
             </div>
 
-            <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="target_points" value="{{ __('Target Points') }}" />
-                <x-jet-input id="target_points" type="number" class="mt-1 block w-full" wire:model.defer="state.target_points" autocomplete="target_points" />
-                <x-jet-input-error for="target_points" class="mt-2" />
-            </div>
-
         </x-slot>
 
         <x-slot name="actions">
