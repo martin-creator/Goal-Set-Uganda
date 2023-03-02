@@ -26,9 +26,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/academics', function () {
+    Route::get('/academic-profile', function () {
         return view('academics');
     })->name('dashboard.academics');
+    Route::get('/teacher-recommendation', function () {
+        return view('teachers-recommendation');
+    })->name('dashboard.recommendation');
 
 });
 

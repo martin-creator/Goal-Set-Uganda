@@ -16,8 +16,11 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     @if ( Route::currentRouteName()!= 'admin.dashboard')
-                    <x-jet-nav-link href="{{ route('dashboard.academics') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('dashboard.academics') }}" :active="request()->routeIs('dashboard.academics')">
                         {{ __('Academic Profile') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard.recommendation') }}" :active="request()->routeIs('dashboard.recommendation')">
+                        {{ __('Teachers Recommendation') }}
                     </x-jet-nav-link>
                     @endif
                 </div>
