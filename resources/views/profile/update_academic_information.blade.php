@@ -8,18 +8,18 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
 
-                @livewire('profile.personal')
+                @livewire('personal')
 
                 <x-jet-section-border />
 
 
-            {{-- @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.update-password-form')
+                    @livewire('education')
                 </div>
 
                 <x-jet-section-border />
-            @endif --}}
+
 
             {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <div class="mt-10 sm:mt-0">
