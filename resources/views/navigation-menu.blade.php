@@ -12,16 +12,20 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if ( Route::currentRouteName()!= 'admin.dashboard')
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Student Dashboard') }}
                     </x-jet-nav-link>
-                    @if ( Route::currentRouteName()!= 'admin.dashboard')
                     <x-jet-nav-link href="{{ route('dashboard.academics') }}" :active="request()->routeIs('dashboard.academics')">
                         {{ __('Academic Profile') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('dashboard.recommendation') }}" :active="request()->routeIs('dashboard.recommendation')">
                         {{ __('Teachers Recommendation') }}
                     </x-jet-nav-link>
+                    @else:
+                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Admin Dashboard') }}
+                        </x-jet-nav-link>
                     @endif
                 </div>
             </div>
