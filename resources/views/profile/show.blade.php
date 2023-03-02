@@ -28,10 +28,11 @@
 
                 <x-jet-section-border />
             @endif
-
+            @if(Route::currentRouteName()!= 'admin.dashboard')
             <div class="mt-10 sm:mt-0">
                 @livewire('profile.logout-other-browser-sessions-form')
             </div>
+            @endif
 
             @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                 <x-jet-section-border />
