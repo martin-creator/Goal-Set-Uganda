@@ -9,8 +9,8 @@
         </x-slot>
 
         <x-slot name="form">
-            <div class="col-span-6 sm:col-span-4 text-center">
-                It is my pleasure to strongly recommend Henry Ramirez for your 4th Grade Math Teacher position at
+            <div class="col-span-6 sm:col-span-4 ">
+                <p class="text-justify">t is my pleasure to strongly recommend Henry Ramirez for your 4th Grade Math Teacher position at
                     Cherry Hill Elementary. I have worked with Henry for three years as his mentor teacher at Maple
                     Ridge Middle School. He is an outstanding educator who has demonstrated exceptional skills,
                     creativity and passion in teaching math.<br/>
@@ -19,7 +19,7 @@
                     developed innovative lesson plans that incorporate technology, hands-on activities and real-world
                     applications. He has also implemented effective assessment strategies that measure student progress
                     and provide feedback for improvement. Henry's students have consistently achieved high scores on
-                    standardized tests and shown remarkable growth in their math skills.
+                    standardized tests and shown remarkable growth in their math skills.</p>
             </div>
         </x-slot>
 
