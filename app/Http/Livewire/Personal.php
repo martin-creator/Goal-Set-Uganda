@@ -29,7 +29,19 @@ class Personal extends Component
             'state.telephone' => 'required',
             'state.class' => 'required',
         ]);
-        
+
+        $user = Auth::user();
+
+        if (Person::where('user_id', $user->id)->exists()) {
+
+            Person::where('user_id', $user->id)->update([
+                'school_name' => $this->state['school_name'],
+                'telephone' => $this->state['telephone'],
+                'class' => $this->state['class'],
+            ]);
+
+            return redirect('dashboard.academics')->with('success', 'Personal Information Updated Successfully');
+        }
 
         $person = new Person();
         $person->school_name = $this->state['school_name'];
