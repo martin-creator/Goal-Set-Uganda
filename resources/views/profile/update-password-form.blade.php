@@ -1,4 +1,4 @@
-<x-jet-form-section submit="updatePassword">
+<x-jet-form-section submit="route{{updatePassword}}">
     <x-slot name="title">
         {{ __('Update Password') }}
     </x-slot>
@@ -25,6 +25,7 @@
             <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
             <x-jet-input-error for="password_confirmation" class="mt-2" />
         </div>
+
     </x-slot>
 
     <x-slot name="actions">
