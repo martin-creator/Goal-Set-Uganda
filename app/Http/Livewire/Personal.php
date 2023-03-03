@@ -15,17 +15,6 @@ class Personal extends Component
     public function mount()
     {
 
-        // if Person exists, update $state with data from database
-        if (Person::where('user_id', Auth::user()->id)->exists()) {
-            $person = Person::where('user_id', Auth::user()->id)->first();
-            $this->state = [
-                'school_name' => $person->school_name,
-                'telephone' => $person->telephone,
-                'class' => $person->class,
-                // ...
-            ];
-        }
-
         // initialize $state with some data
         $this->state = [
             'school_name' => 'ABC School',
@@ -44,8 +33,10 @@ class Personal extends Component
                 // ...
             ];
         }
+
     }
 
+    // insert or update personal information
     public function insertPersonalInformation()
     {
         $this->validate([
@@ -56,6 +47,8 @@ class Personal extends Component
 
         $user = Auth::user();
 
+
+        // if Person exists, update
         if (Person::where('user_id', $user->id)->exists()) {
 
             Person::where('user_id', $user->id)->update([
@@ -79,7 +72,7 @@ class Personal extends Component
     }
 
 
-
+    // render livewire component
     public function render()
     {
         return view('livewire.personal');
