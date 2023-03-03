@@ -22,9 +22,9 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="stream" value="{{ __('Stream') }}" />
-                <x-jet-input id="stream" type="text" class="mt-1 block w-full" wire:model.defer="state.stream" autocomplete="stream" />
-                <x-jet-input-error for="stream" class="mt-2" />
+                <x-jet-label for="class" value="{{ __('Class') }}" />
+                <x-jet-input id="class" type="text" class="mt-1 block w-full" wire:model.defer="state.class" autocomplete="class" />
+                <x-jet-input-error for="class" class="mt-2" />
             </div>
 
         </x-slot>

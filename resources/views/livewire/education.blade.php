@@ -17,6 +17,12 @@
                 </div>
 
                 <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label for="role_model" value="{{ __('Role Model') }}" />
+                    <x-jet-input id="role_model" type="number" class="mt-1 block w-full" wire:model.defer="state.role_model" autocomplete="role_model" />
+                    <x-jet-input-error for="role_model" class="mt-2" />
+                </div>
+
+                <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="target_points" value="{{ __('Target Points at UCE or UACE') }}" />
                     <x-jet-input id="target_points" type="number" class="mt-1 block w-full" wire:model.defer="state.target_points" autocomplete="target_points" />
                     <x-jet-input-error for="target_points" class="mt-2" />
@@ -32,12 +38,6 @@
                     <x-jet-label for="university_cutoff" value="{{ __('University cutoff') }}" />
                     <x-jet-input id="university_cutoff" type="text" class="mt-1 block w-full" wire:model.defer="state.university_cutoff" autocomplete="university_cutoff" />
                     <x-jet-input-error for="university_cutoff" class="mt-2" />
-                </div>
-
-                <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="role_model" value="{{ __('Role Model') }}" />
-                    <x-jet-input id="role_model" type="number" class="mt-1 block w-full" wire:model.defer="state.role_model" autocomplete="role_model" />
-                    <x-jet-input-error for="role_model" class="mt-2" />
                 </div>
 
             </x-slot>
