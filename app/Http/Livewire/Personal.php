@@ -40,7 +40,7 @@ class Personal extends Component
                 'class' => $this->state['class'],
             ]);
 
-            return redirect('dashboard.academics')->with('success', 'Personal Information Updated Successfully');
+            return redirect('/academic-profile')->with('success', 'Personal Information Updated Successfully');
         }
 
         $person = new Person();
