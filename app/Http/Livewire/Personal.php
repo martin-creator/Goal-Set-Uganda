@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Person;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 
 class Personal extends Component
@@ -13,6 +14,18 @@ class Personal extends Component
 
     public function mount()
     {
+
+        // if Person exists, update $state with data from database
+        if (Person::where('user_id', Auth::user()->id)->exists()) {
+            $person = Person::where('user_id', Auth::user()->id)->first();
+            $this->state = [
+                'school_name' => $person->school_name,
+                'telephone' => $person->telephone,
+                'class' => $person->class,
+                // ...
+            ];
+        }
+
         // initialize $state with some data
         $this->state = [
             'school_name' => 'ABC School',
@@ -20,6 +33,17 @@ class Personal extends Component
             'class' => '10',
             // ...
         ];
+
+        // if Person exists, update $state with data from database
+        if (Person::where('user_id', Auth::user()->id)->exists()) {
+            $person = Person::where('user_id', Auth::user()->id)->first();
+            $this->state = [
+                'school_name' => $person->school_name,
+                'telephone' => $person->telephone,
+                'class' => $person->class,
+                // ...
+            ];
+        }
     }
 
     public function insertPersonalInformation()
@@ -39,6 +63,7 @@ class Personal extends Component
                 'telephone' => $this->state['telephone'],
                 'class' => $this->state['class'],
             ]);
+
 
             return redirect('/academic-profile')->with('success', 'Personal Information Updated Successfully');
         }
