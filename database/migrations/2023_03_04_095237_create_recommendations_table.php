@@ -15,6 +15,8 @@ class CreateRecommendationsTable extends Migration
     {
         Schema::create('recommendations', function (Blueprint $table) {
             $table->id();
+            $table->longText('recommendation')->nullable()->default('You are a good student');
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
     }
