@@ -11,6 +11,7 @@ class Personal extends Component
 {
 
     public $state = [];
+    public $selectedSchool = null;
 
     public function mount()
     {
@@ -83,6 +84,7 @@ class Personal extends Component
     // render livewire component
     public function render()
     {
-        return view('livewire.personal');
+        $enrolledSchools = ['Mengo Senior School', 'Kampala International', 'Lubiri Senior School'];
+        return view('livewire.personal', compact('enrolledSchools'));
     }
 }
