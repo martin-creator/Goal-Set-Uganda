@@ -24,7 +24,7 @@ class Entrepreneurial extends Component
         if (Entrepreneurship::where('user_id', Auth::user()->id)->exists()) {
 
             $this->state = [
-                'co-cirricular' => Entrepreneurship::where('user_id', Auth::user()->id)->first()->co_cirricular,
+                'co-cirricular' => Entrepreneurship::where('user_id', Auth::user()->id)->first()->cocirricular_activity,
                 'economic_activity' => Entrepreneurship::where('user_id', Auth::user()->id)->first()->economic_activity,
             ];
         }
