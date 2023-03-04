@@ -6,20 +6,15 @@
 
         <x-slot name="description">
             {{ __('Ensure  that you provide accurate details about yourself. This will help you provide you with the best experience') }}
+            <br><hr><p class=" mt-4 text-sm text-center text-red-700">Updated at: {{ $recommendation->created_at }} </p>
         </x-slot>
+
 
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4 ">
-                <p class="text-justify">t is my pleasure to strongly recommend Henry Ramirez for your 4th Grade Math Teacher position at
-                    Cherry Hill Elementary. I have worked with Henry for three years as his mentor teacher at Maple
-                    Ridge Middle School. He is an outstanding educator who has demonstrated exceptional skills,
-                    creativity and passion in teaching math.<br/>
-
-                    Henry has been instrumental in improving the math curriculum and instruction at our school. He has
-                    developed innovative lesson plans that incorporate technology, hands-on activities and real-world
-                    applications. He has also implemented effective assessment strategies that measure student progress
-                    and provide feedback for improvement. Henry's students have consistently achieved high scores on
-                    standardized tests and shown remarkable growth in their math skills.</p>
+                <p class="text-justify">
+                    {{$recommendation->recommendation}}
+                </p>
             </div>
         </x-slot>
 
