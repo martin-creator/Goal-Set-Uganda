@@ -18,7 +18,7 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="role_model" value="{{ __('Role Model') }}" />
-                <x-jet-input id="role_model" type="number" class="mt-1 block w-full" wire:model.defer="state.role_model" autocomplete="role_model" />
+                <x-jet-input id="role_model" type="text" class="mt-1 block w-full" wire:model.defer="state.role_model" autocomplete="role_model" />
                 <x-jet-input-error for="role_model" class="mt-2" />
             </div>
 
