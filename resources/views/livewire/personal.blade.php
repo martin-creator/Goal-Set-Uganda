@@ -19,18 +19,9 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="school_name" value="{{ __('School Name') }}" />
                 <x-jet-input id="school_name" type="text" class="mt-1 block w-full"
-                    wire:model.defer="state.school_name" autocomplete="school_name " wire:loading.attr="disabled"  />
+                    wire:model.defer="state.school_name" autocomplete="school_name " />
                 <x-jet-input-error for="school_name" class="mt-2" />
             </div>
-            @push('scripts')
-                <script>
-                    $('input#school_name').mousedown(function(e) {
-                        e.preventDefault();
-                        $(this).blur();
-                        return false;
-                    });
-                </script>
-            @endpush
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="class" value="{{ __('Class') }}" />
@@ -70,3 +61,11 @@
     </x-jet-form-section>
 
 </div>
+
+<script>
+    $('input#school_name').mousedown(function(e) {
+        e.preventDefault();
+        $(this).blur();
+        return false;
+    });
+</script>
