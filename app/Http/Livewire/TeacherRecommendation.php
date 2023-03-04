@@ -14,7 +14,7 @@ class TeacherRecommendation extends Component
     public function render()
     {
         $recommendation = Recommendation::where('user_id', Auth::user()->id)->first();
-        Log::info('Recommmednations', ['recommendation'=>$recommendation]);
+        //Log::info('Recommmednations', ['recommendation'=>$recommendation]);
         return view('livewire.teacher-recommendation', compact('recommendation'));
 
     }

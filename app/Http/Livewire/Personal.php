@@ -73,7 +73,7 @@ class Personal extends Component
     //update personal information into database
     public function updatePersonalInformation()
     {
-        
+
         $user = Auth::user();
 
         Person::where('user_id', $user->id)->update([
@@ -88,7 +88,7 @@ class Personal extends Component
     public function render()
     {
         $enrolledSchools = School::all();
-        Log::info('Enrolled schools', ['enrolledSchools'=>$enrolledSchools]);
+        //Log::info('Enrolled schools', ['enrolledSchools'=>$enrolledSchools]);
         return view('livewire.personal', compact('enrolledSchools'));
     }
 }
