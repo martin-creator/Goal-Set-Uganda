@@ -29,7 +29,7 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="school" value="{{ __('School') }}" />
-                <select wire:model="selectedSchool" class="form-control">
+                <select wire:model="selectedSchool" class="form-control" style="color:black;">
                     <option value="" selected>Select school</option>
                     @foreach($enrolledSchools as $school)
                         <option value="{{ $school->id }}">{{ $school->name }}</option>
@@ -37,7 +37,7 @@
                 </select>
                 @if($selectedSchool)
                 <div class="mt-3">
-                    You have selected {{ $selectedSchool }}
+                    You have selected {{ $enrolledSchools->where('id', $selectedSchool)->first()->name }}
                 </div>
                 @endif
 

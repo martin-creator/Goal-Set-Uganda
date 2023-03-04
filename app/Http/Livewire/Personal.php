@@ -4,8 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Person;
+use App\Models\School;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class Personal extends Component
 {
@@ -84,7 +86,8 @@ class Personal extends Component
     // render livewire component
     public function render()
     {
-        $enrolledSchools = ['Mengo Senior School', 'Kampala International', 'Lubiri Senior School'];
+        $enrolledSchools = School::all();
+        Log::info('Enrolled schools', ['enrolledSchools'=>$enrolledSchools]);
         return view('livewire.personal', compact('enrolledSchools'));
     }
 }
