@@ -23,7 +23,7 @@
 
 
                 <div class="mt-10 sm:mt-0">
-                    @livewire('entrepreneurship')
+                    @livewire('entrepreneurial')
                 </div>
 
                 <x-jet-section-border />
