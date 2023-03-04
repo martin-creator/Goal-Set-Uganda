@@ -22,8 +22,46 @@ class Entrepreneurial extends Component
 
         // if Person exists, update $state with data from database
         if (Entrepreneurship::where('user_id', Auth::user()->id)->exists()) {
-           
+
+            $this->state = [
+                'co-cirricular' => Entrepreneurship::where('user_id', Auth::user()->id)->first()->co_cirricular,
+                'economic_activity' => Entrepreneurship::where('user_id', Auth::user()->id)->first()->economic_activity,
+            ];
         }
+    }
+
+
+    //insert  entrepreneurship information into database
+    public function insertEntrepreneurshipInformation()
+    {
+        $this->validate([
+            'state.co-cirricular' => 'required',
+            'state.economic_activity' => 'required',
+        ]);
+
+        if (Entrepreneurship::where('user_id', Auth::user()->id)->exists()) {
+            $this->updateEntrepreneurshipInformation();
+
+            Entrepreneurship::create([
+                'user_id' => Auth::user()->id,
+                'co-cirricular' => $this->state['co-cirricular'],
+                'economic_activity' => $this->state['economic_activity'],
+            ]);
+        }
+    }
+
+    // update entrepreneurship information into database
+    public function updateEntrepreneurshipInformation()
+    {
+        $this->validate([
+            'state.co-cirricular' => 'required',
+            'state.economic_activity' => 'required',
+        ]);
+
+        Entrepreneurship::where('user_id', Auth::user()->id)->update([
+            'co-cirricular' => $this->state['co-cirricular'],
+            'economic_activity' => $this->state['economic_activity'],
+        ]);
     }
 
 
