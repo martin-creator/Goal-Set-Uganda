@@ -33,7 +33,6 @@ class Personal extends Component
                 // ...
             ];
         }
-
     }
 
     // insert or update personal information
@@ -51,12 +50,7 @@ class Personal extends Component
         // if Person exists, update
         if (Person::where('user_id', $user->id)->exists()) {
 
-            Person::where('user_id', $user->id)->update([
-                'school_name' => $this->state['school_name'],
-                'telephone' => $this->state['telephone'],
-                'class' => $this->state['class'],
-            ]);
-
+            $this->updatePersonalInformation();
 
             return redirect('/academic-profile')->with('success', 'Personal Information Updated Successfully');
         }
@@ -69,6 +63,25 @@ class Personal extends Component
         $person->save();
 
         return redirect('')->back()->with('success', 'Personal Information Updated Successfully');
+    }
+
+
+    //update personal information into database
+    public function updatePersonalInformation()
+    {
+        $this->validate([
+            'state.school_name' => 'required',
+            'state.telephone' => 'required',
+            'state.class' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        Person::where('user_id', $user->id)->update([
+            'school_name' => $this->state['school_name'],
+            'telephone' => $this->state['telephone'],
+            'class' => $this->state['class'],
+        ]);
     }
 
 
