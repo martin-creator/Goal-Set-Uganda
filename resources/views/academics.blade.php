@@ -15,7 +15,7 @@
 
 
                 <div class="mt-10 sm:mt-0">
-                    @livewire('education')
+                    @livewire('educational')
                 </div>
 
                 <x-jet-section-border />
