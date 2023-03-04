@@ -14,14 +14,16 @@ class CreateEducationsTable extends Migration
     public function up()
     {
         Schema::create('educations', function (Blueprint $table) {
+            
             $table->id();
-            $table->string('career')->nullable();
-            $table->string('role_model')->nullable();
-            $table->integer('target_points')->unique();
-            $table->string('target_university')->nullable();
-            $table->string('university_cutoff')->nullable();
+            $table->string('career')->nullable()->default('Computer Science');
+            $table->string('role_model')->nullable()->default('Bill Gates');
+            $table->integer('target_points')->nullable()->default(20);
+            $table->string('target_university')->nullable()->default('University of Nairobi');
+            $table->string('university_cutoff')->nullable()->default('30.2');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
+
         });
     }
 
