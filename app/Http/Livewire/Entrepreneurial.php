@@ -59,10 +59,6 @@ class Entrepreneurial extends Component
     // update entrepreneurship information into database
     public function updateEntrepreneurshipInformation()
     {
-        $this->validate([
-            'state.co-cirricular' => 'required',
-            'state.economic_activity' => 'required',
-        ]);
 
         Entrepreneurship::where('user_id', Auth::user()->id)->update([
             'cocirricular_activity' => $this->state['co-cirricular'],

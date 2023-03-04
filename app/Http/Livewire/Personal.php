@@ -69,11 +69,6 @@ class Personal extends Component
     //update personal information into database
     public function updatePersonalInformation()
     {
-        $this->validate([
-            'state.school_name' => 'required',
-            'state.telephone' => 'required',
-            'state.class' => 'required',
-        ]);
 
         $user = Auth::user();
 

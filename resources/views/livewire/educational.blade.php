@@ -1,6 +1,6 @@
 
 <div>
-    <x-jet-form-section submit="#">
+    <x-jet-form-section submit="insertEducationInformation">
         <x-slot name="title">
             {{ __('Education') }}
         </x-slot>
