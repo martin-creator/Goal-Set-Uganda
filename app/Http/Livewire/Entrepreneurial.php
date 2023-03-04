@@ -40,14 +40,20 @@ class Entrepreneurial extends Component
         ]);
 
         if (Entrepreneurship::where('user_id', Auth::user()->id)->exists()) {
+
             $this->updateEntrepreneurshipInformation();
 
-            Entrepreneurship::create([
-                'user_id' => Auth::user()->id,
-                'co-cirricular' => $this->state['co-cirricular'],
-                'economic_activity' => $this->state['economic_activity'],
-            ]);
+            return redirect('/academic-profile')->with('success', 'Entrepreneurship information updated successfully');
         }
+
+        Entrepreneurship::create([
+            'user_id' => Auth::user()->id,
+            'co-cirricular' => $this->state['co-cirricular'],
+            'economic_activity' => $this->state['economic_activity'],
+        ]);
+
+        return redirect('/academic-profile')->with('success', 'Entrepreneurship information added successfully');
+
     }
 
     // update entrepreneurship information into database
