@@ -41,6 +41,7 @@ class Personal extends Component
     // insert or update personal information
     public function insertPersonalInformation()
     {
+
         $this->validate([
             'state.school_name' => 'required',
             'state.telephone' => 'required',
@@ -72,7 +73,7 @@ class Personal extends Component
     //update personal information into database
     public function updatePersonalInformation()
     {
-
+        
         $user = Auth::user();
 
         Person::where('user_id', $user->id)->update([
