@@ -46,11 +46,11 @@ class Entrepreneurial extends Component
             return redirect('/academic-profile')->with('success', 'Entrepreneurship information updated successfully');
         }
 
-        Entrepreneurship::create([
-            'user_id' => Auth::user()->id,
-            'co-cirricular' => $this->state['co-cirricular'],
-            'economic_activity' => $this->state['economic_activity'],
-        ]);
+            $entrepreneurship =  new Entrepreneurship();
+            $entrepreneurship->user_id = Auth::user()->id;
+            $entrepreneurship->cocirricular_activity = $this->state['co-cirricular'];
+            $entrepreneurship->economic_activity = $this->state['economic_activity'];
+            $entrepreneurship->save();
 
         return redirect('/academic-profile')->with('success', 'Entrepreneurship information added successfully');
 
@@ -65,7 +65,7 @@ class Entrepreneurial extends Component
         ]);
 
         Entrepreneurship::where('user_id', Auth::user()->id)->update([
-            'co-cirricular' => $this->state['co-cirricular'],
+            'cocirricular_activity' => $this->state['co-cirricular'],
             'economic_activity' => $this->state['economic_activity'],
         ]);
     }
