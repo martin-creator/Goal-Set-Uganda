@@ -6,11 +6,11 @@
     <div class="mt-8 text-sm text-center">
         <q>{{ $quote }}</q>
     </div>
-    
+
     <div class="mt-10 text-2xl">
         Welcome to your Goal Fix Uganda!
     </div>
-   
+
 
     <div class="mt-6 text-gray-500 hover:bg-gray-100">
         Goal setting is the process of defining what you want to achieve and how you will get there. It helps you focus
@@ -151,7 +151,8 @@
 
         <div class="ml-12">
             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm text-center">
-                <h3>{{ $quote }}</h3>
+                <h3>For guidance call, Wamala <a href="+256752400627">+256752400627</a> or email <a href="wamalahen@gmail.com">wamalahen@gmail.com</a>
+                </h3>
             </div>
         </div>
     </div>
