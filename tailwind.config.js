@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const twElements = require('tw-elements');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
