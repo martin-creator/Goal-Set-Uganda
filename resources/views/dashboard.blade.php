@@ -9,9 +9,9 @@
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @livewire('set-targets')
-                {{-- <x-jet-welcome />
-                @livewire('set-targets') --}}
-            {{-- </div>
+                <x-jet-welcome />
+                @livewire('set-targets') -
+            </div>
         </div>
 
 
