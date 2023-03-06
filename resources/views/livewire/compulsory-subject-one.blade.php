@@ -12,7 +12,7 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="subject_name" value="{{ __('Subject Name') }}" />
-                <x-jet-input id="suject_name" type="text" class="mt-1 block w-full" wire:model.defer="state.subject_name"
+                <x-jet-input id="subject_name" type="text" class="mt-1 block w-full" wire:model.defer="state.subject_name"
                     autocomplete="subject_name"/>
                 <x-jet-input-error for="subject_name" class="mt-2" />
             </div>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="school" value="{{ __(' Change School Name') }}" />
+                <x-jet-label for="subject" value="{{ __(' Change School Name') }}" />
                 <select wire:model.defer="state.subject_name" class="form-control" style="color:black;">
                     <option value="{{ __('School Name') }}" selected>Select school</option>
                     @foreach ($listedSubjects as $subject)
@@ -73,7 +73,7 @@
                     </div>
                 @endif
 
-                <x-jet-input-error for="school" class="mt-2" />
+                <x-jet-input-error for="subject" class="mt-2" />
             </div>
 
         </x-slot>
