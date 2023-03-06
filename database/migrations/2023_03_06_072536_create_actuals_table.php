@@ -15,6 +15,10 @@ class CreateActualsTable extends Migration
     {
         Schema::create('actuals', function (Blueprint $table) {
             $table->id();
+            $table->integer('Paper_one')->nullable()->default(0);
+            $table->integer('Paper_two')->nullable()->default(0);
+            $table->integer('Paper_three')->nullable()->default(0);
+            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
             $table->timestamps();
         });
     }
