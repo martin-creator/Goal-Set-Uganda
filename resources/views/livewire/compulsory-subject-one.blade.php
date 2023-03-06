@@ -19,10 +19,10 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="paper_one_actual" value="{{ __('Paper One Actual') }}" />
-                <x-jet-input id="paper_one_actual" type="number" class="mt-1 block w-full"
+                <x-jet-input id="paper_one_actual" type="range" class="mt-1 block w-full"
                     wire:model.defer="state.paper_one_actual" autocomplete="paper_one_actual" min="0"
-                    max="100" value="{{ $state['paper_one_actual'] }}" pattern="[0-9]" title="Numbers only" />
-                <p>Value: <output id="value1"></output></p>
+                    max="100" value="{{ $state['paper_one_actual'] }}" />
+                <p>Value: <output id="value1">{{ $state['paper_one_actual'] }}</output></p>
                 <x-jet-input-error for="paper_one_actual" class="mt-2" />
             </div>
 
@@ -31,8 +31,8 @@
                 <x-jet-input id="paper_one_target" type="range" class="mt-1 block w-full"
                     wire:model.defer="state.paper_one_actual" autocomplete="paper_one_target" min="0"
                     max="100"
-                    value="{{ $state['paper_one_actual'] }}" />
-                <p>Value: <output id="value2">{{ $state['paper_one_actual'] }}</output>
+                    value="60" />
+                <p>Value: <output id="value2">{{ $state['paper_one_target'] }}</output>
                     </p>
                     <x-jet-input-error for="paper_one_target" class="mt-2" />
             </div>
@@ -51,7 +51,7 @@
                 <x-jet-input id="paper_two_target" type="range" class="mt-1 block w-full"
                     wire:model.defer="state.paper_two_target" autocomplete="paper_two_target" min="0"
                     max="100" value="{{ $state['paper_two_target'] }}" />
-                <p>Value: <output id="value4"></output></p>
+                <p>Value: <output id="value4">{{ $state['paper_two_target'] }}</output></p>
                 <x-jet-input-error for="paper_two_target" class="mt-2" />
             </div>
 
@@ -60,7 +60,7 @@
                 <x-jet-input id="paper_three_actual" type="range" class="mt-1 block w-full"
                     wire:model.defer="state.paper_three_actual" autocomplete="paper_three_actual" min="0"
                     max="100" value="{{ $state['paper_three_actual'] }}" />
-                <p>Value: <output id="value5"></output></p>
+                <p>Value: <output id="value5">{{$state['paper_three_actual'] }}</output></p>
                 <x-jet-input-error for="paper_three_actual" class="mt-2" />
             </div>
 
@@ -69,7 +69,7 @@
                 <x-jet-input id="paper_three_target" type="range" class="mt-1 block w-full"
                     wire:model.defer="state.paper_three_target" autocomplete="paper_three_target" min="0"
                     max="100" value="{{ $state['paper_three_target'] }}" />
-                <p>Value: <output id="value6"></output></p>
+                <p>Value: <output id="value6">{{ $state['paper_three_target'] }}</output></p>
                 <x-jet-input-error for="paper_three_target" class="mt-2" />
             </div>
 
@@ -127,12 +127,12 @@
     const paper_three_actual = document.querySelector("#paper_three_actual");
     const paper_three_target = document.querySelector("#paper_three_target");
 
-    value1.textContent = paper_one_actual.value || 0;
-    value2.textContent = paper_one_target.value || 0;
-    value3.textContent = paper_two_actual.value || 0;
-    value4.textContent = paper_two_target.value || 0;
-    value5.textContent = paper_three_actual.value || 0;
-    value6.textContent = paper_three_target.value || 0;
+    value1.textContent = paper_one_actual.value;
+    value2.textContent = paper_one_target.value;
+    value3.textContent = paper_two_actual.value;
+    value4.textContent = paper_two_target.value;
+    value5.textContent = paper_three_actual.value;
+    value6.textContent = paper_three_target.value;
 
     paper_one_actual.addEventListener("input", (event) => {
         value1.textContent = event.target.value

@@ -17,8 +17,8 @@ class CompulsorySubjectOne extends Component
     {
         $this->state = [
             'subject_name' => 'History',
-            'paper_one_target' => '',
-            'paper_one_actual' => '0',
+            'paper_one_target' => '0',
+            'paper_one_actual' => '60',
             'paper_two_target' => '0',
             'paper_two_actual' => '0',
             'paper_three_target' => '0',
