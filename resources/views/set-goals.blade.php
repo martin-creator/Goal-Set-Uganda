@@ -8,13 +8,13 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
 
-                @livewire('personal')
+                @livewire('compulsory-subject-one')
 
                 <x-jet-section-border />
 
 
 
-                <div class="mt-10 sm:mt-0">
+                {{-- <div class="mt-10 sm:mt-0">
                     @livewire('educational')
                 </div>
 
@@ -26,7 +26,7 @@
                     @livewire('entrepreneurial')
                 </div>
 
-                <x-jet-section-border />
+                <x-jet-section-border /> --}}
 
             {{-- @if(Route::currentRouteName()!= 'admin.dashboard')
             <div class="mt-10 sm:mt-0">

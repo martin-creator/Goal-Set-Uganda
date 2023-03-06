@@ -16,6 +16,9 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Student Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard.goals') }}" :active="request()->routeIs('dashboard.goals')">
+                        {{ __('Set Goals') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('dashboard.academics') }}" :active="request()->routeIs('dashboard.academics')">
                         {{ __('Academic Profile') }}
                     </x-jet-nav-link>
