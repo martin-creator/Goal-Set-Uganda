@@ -33,6 +33,9 @@ Route::middleware([
     Route::get('/teacher-recommendation', function () {
         return view('teachers-recommendation');
     })->name('dashboard.recommendation');
+    Route::get('/set-goals', function () {
+        return view('set-goals');
+    })->name('dashboard.goals');
 
 });
 
