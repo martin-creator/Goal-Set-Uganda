@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActualsTable extends Migration
+class CreateTargetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateActualsTable extends Migration
      */
     public function up()
     {
-        Schema::create('actuals', function (Blueprint $table) {
+        Schema::create('targets', function (Blueprint $table) {
             $table->id();
             $table->integer('Paper_one')->nullable()->default(0);
             $table->integer('Paper_two')->nullable()->default(0);
             $table->integer('Paper_three')->nullable()->default(0);
-            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
+            $table->integer('subject_id')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateActualsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actuals');
+        Schema::dropIfExists('targets');
     }
 }

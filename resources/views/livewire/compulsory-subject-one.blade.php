@@ -29,9 +29,9 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="paper_one_target" value="{{ __('Paper One Target') }}" />
                 <x-jet-input id="paper_one_target" type="range" class="mt-1 block w-full"
-                    wire:model.defer="state.paper_one_actual" autocomplete="paper_one_target" min="0"
+                    wire:model.defer="state.paper_one_target" autocomplete="paper_one_target" min="0"
                     max="100"
-                    value="60" />
+                    value="60" value="{{ $state['paper_one_target'] }} "/>
                 <p>Value: <output id="value2">{{ $state['paper_one_target'] }}</output>
                     </p>
                     <x-jet-input-error for="paper_one_target" class="mt-2" />
@@ -78,7 +78,7 @@
                 <select wire:model.defer="state.subject_name" class="form-control" style="color:black;">
                     <option value="{{ __('School Name') }}" selected>Select school</option>
                     @foreach ($listedSubjects as $subject)
-                        <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
+                        <option value="{{ $subject->subject_name }}">{{ $subject->subject_name }}</option>
                     @endforeach
                 </select>
                 @if ($selectedSubject)
