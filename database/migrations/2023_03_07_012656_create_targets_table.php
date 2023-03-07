@@ -19,6 +19,7 @@ class CreateTargetsTable extends Migration
             $table->integer('Paper_two')->nullable()->default(0);
             $table->integer('Paper_three')->nullable()->default(0);
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

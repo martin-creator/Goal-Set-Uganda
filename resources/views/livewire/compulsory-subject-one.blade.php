@@ -1,5 +1,5 @@
 <div>
-    <x-jet-form-section submit="insertPersonalInformation">
+    <x-jet-form-section submit="insertActualAndTargetMarks">
         <x-slot name="title">
             {{ __('Subject One') }}
         </x-slot>
@@ -78,7 +78,7 @@
                 <select wire:model.defer="state.subject_name" class="form-control" style="color:black;">
                     <option value="{{ __('School Name') }}" selected>Select school</option>
                     @foreach ($listedSubjects as $subject)
-                        <option value="{{ $subject->subject_name }}">{{ $subject->subject_name }}</option>
+                        <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
                     @endforeach
                 </select>
                 @if ($selectedSubject)
