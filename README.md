@@ -1,4 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+
+# Goal Setting System
+The Goal Setting System is a web application designed to help students set and track their academic goals. The system allows students to input their target grades for each subject and paper, as well as their actual grades. The system then calculates the deviation between the target and actual grades and displays them to the student. In addition, the system generates progress reports for each student and allows for mobile payments using MTN API.
+
+## Installation
+To install the system, follow these steps:
+
+- Clone the repository to your local machine.
+- Install dependencies by running composer install.
+- Create a new database and configure your .env file with your database credentials.
+- Run database migrations by running php artisan migrate.
+- Seed the database with sample data by running php artisan db:seed.
+
+## Usage
+To use the system, follow these steps:
+
+- Register as a new student or log in with an existing account.
+- Set your target grades for each subject and paper.
+- Input your actual grades as you receive them.
+- View your progress reports and monitor your performance.
+- Make mobile payments for any outstanding fees using MTN API.
+
+## System Architecture
+The Goal Setting System is built using the Laravel PHP framework and follows a three-layer architecture:
+
+- Presentation layer: This layer handles the presentation of data to the user through the web interface. It is responsible for handling user requests, validating input, and displaying output.
+
+- Application layer: This layer contains the business logic of the system. It handles the processing of user input, the calculation of grades, and the generation of progress reports.
+
+- Data layer: This layer handles the storage and retrieval of data from the database. It is responsible for ensuring the security and - privacy of user data.
+
+## Data Privacy
+The Goal Setting System is designed with data privacy in mind. All user data is encrypted and stored securely in the database. Only authenticated users have access to their own data. Any payments made using MTN API are processed securely and all payment data is encrypted.
+
+## Contributors
+This system was developed by Martin Lubowa. Contributions and feedback are welcome. Please open an issue or submit a pull request if you notice any bugs or have suggestions for improvements.
+
+## License
+This system is licensed under the MIT License. See the LICENSE file for details.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -61,4 +136,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->

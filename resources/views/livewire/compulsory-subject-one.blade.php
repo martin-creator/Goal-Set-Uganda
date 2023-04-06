@@ -74,7 +74,7 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="subject" value="{{ __(' Change School Name') }}" />
+                <x-jet-label for="subject" value="{{ __(' Change Subject') }}" />
                 <select wire:model.defer="state.subject_name" class="form-control" style="color:black;">
                     <option value="{{ __('School Name') }}" selected>Select school</option>
                     @foreach ($listedSubjects as $subject)

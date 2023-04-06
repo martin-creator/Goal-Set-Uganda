@@ -29,22 +29,22 @@ class CompulsorySubjectOne extends Component
         // if Target and Actual exists, update $state with data from database
         if(Target::where('user_id', Auth::user()->id)->exists() and Actual::where('user_id', Auth::user()->id)->exists()){
             Log::info("selcted subject is:", [$this->selectedSubject]);
-            $targetSubjectId = Actual::where('user_id', Auth::user()->id)->first()->subject_id;
+            $targetSubjectId = (Actual::where('user_id', Auth::user()->id)->first());
             Log::info("target subject id is:", [$targetSubjectId]);
-            $target = Target::where('user_id', Auth::user()->id)->where('subject_id', $targetSubjectId)->first();
-            $actual = Actual::where('user_id', Auth::user()->id)->where('subject_id', $targetSubjectId)->first();
-            $subject = Subject::where('id', $targetSubjectId)->first();
+            // $target = Target::where('user_id', Auth::user()->id)->where('subject_id', $targetSubjectId)->first();
+            // $actual = Actual::where('user_id', Auth::user()->id)->where('subject_id', $targetSubjectId)->first();
+            // $subject = Subject::where('id', $targetSubjectId)->first();
 
-            $this->state = [
-                'subject_name' => $subject->subject_name,
-                'paper_one_target' => $target->Paper_one,
-                'paper_one_actual' => $actual->Paper_one,
-                'paper_two_target' => $target->Paper_two,
-                'paper_two_actual' => $actual->Paper_two,
-                'paper_three_target' => $target->Paper_three,
-                'paper_three_actual' => $actual->Paper_three,
-                'paper_four_target' => $target->Paper_four,
-            ];
+            // $this->state = [
+            //     'subject_name' => $subject->subject_name,
+            //     'paper_one_target' => $target->Paper_one,
+            //     'paper_one_actual' => $actual->Paper_one,
+            //     'paper_two_target' => $target->Paper_two,
+            //     'paper_two_actual' => $actual->Paper_two,
+            //     'paper_three_target' => $target->Paper_three,
+            //     'paper_three_actual' => $actual->Paper_three,
+            //     'paper_four_target' => $target->Paper_four,
+            // ];
         }
     }
 
