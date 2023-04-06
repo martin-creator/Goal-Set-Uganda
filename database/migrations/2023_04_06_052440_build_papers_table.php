@@ -15,7 +15,7 @@ class BuildPapersTable extends Migration
     {
         //
         Schema::create('papers', function (Blueprint $table) {
-            $table->id('paper_id');
+            $table->bigIncrements('paper_id');
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
             $table->string('paper_name')->nullable()->default("Paper 1");
             $table->timestamps();
