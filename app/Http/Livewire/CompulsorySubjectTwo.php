@@ -4,10 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Subject;
-use App\Models\Target;
-use App\Models\Actual;
+use App\Models\Mark;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+
 
 class CompulsorySubjectTwo extends Component
 {
@@ -19,132 +20,90 @@ class CompulsorySubjectTwo extends Component
     {
         $this->state_two = [
             'subject_name_two' => 'History',
-            'paper_one_target_two' => '0',
-            'paper_one_actual_two' => '60',
-            'paper_two_target_two' => '0',
-            'paper_two_actual_two' => '0',
-            'paper_three_target_two' => '0',
-            'paper_three_actual_two' => '0',
+            'target_mark_two' => '0',
+            'actual_mark_two' => '60',
+            'compulsory_subject_number_two' => '0'
         ];
 
+        $this->state_two['compulsory_subject_number_two'] = 2;
 
-        // if Target and Actual exists, update $state_two with data from database
-        if(Target::where('user_id', Auth::user()->id)->exists() and Actual::where('user_id', Auth::user()->id)->exists()){
-            Log::info("selcted subject is:", [$this->selectedSubject_two]);
-            Log::info("user id is:", [Auth::user()->id]);
-            $target_twoSubjectId = Actual::where('user_id', Auth::user()->id)->first()->subject_id;
-            Log::info("target subject id is:", [$target_twoSubjectId]);
-            // $target_two = Target::where('user_id', Auth::user()->id)->where('subject_id', $target_twoSubjectId)->first();
-            // $actual_two = Actual::where('user_id', Auth::user()->id)->where('subject_id', $target_twoSubjectId)->first();
-            // $subject = Subject::where('id', $target_twoSubjectId)->first();
-
-            // $this->state_two = [
-            //     'subject_name_two' => $subject->subject_name,
-            //     'paper_one_target_two' => $target_two->Paper_one,
-            //     'paper_one_actual_two' => $actual_two->Paper_one,
-            //     'paper_two_target_two' => $target_two->Paper_two,
-            //     'paper_two_actual_two' => $actual_two->Paper_two,
-            //     'paper_three_target_two' => $target_two->Paper_three,
-            //     'paper_three_actual_two' => $actual_two->Paper_three,
-
-            // ];
+        // if Target and Actual exists, update $state with data from database
+        if (Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)) {
+            $this->state_two['compulsory_subject_number'] = 2;
+            // find the subject id of the first compulsory subject
+            $targetSubjectId = Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)->first()->subject_id;
+            $target = Mark::where('user_id', Auth::user()->id)->where('subject_id', $targetSubjectId)->first();
+            $subject = Subject::where('id', $targetSubjectId)->first();
+            $this->state_two = [
+                'subject_name_two' => $subject->subject_name,
+                'target_mark_two' => $target->target_mark,
+                'actual_mark_two' => $target->actual_mark,
+                'compulsory_subject_number_two' => $target->compulsory_subject_number,
+            ];
         }
     }
 
-    // insert or update marks
-    public function insertActualAndTargetMarksTwo(){
+
+    // insert marks
+    public function insertMarks()
+    {
+
+        Log::info($this->state_two);
         $this->validate([
-            'state.subject_name' => 'required',
-            'state.paper_one_target_two' => 'required',
-            'state.paper_one_actual_two' => 'required',
-            'state.paper_two_target_two' => 'required',
-            'state.paper_two_actual_two' => 'required',
-            'state.paper_three_target_two' => 'required',
-            'state.paper_three_actual_two' => 'required',
+            'state_two.subject_name_two' => 'required',
+            'state_two.target_mark_two' => 'required',
+            'state_two.actual_mark_two' => 'required',
+            'state_two.compulsory_subject_number_two' => 'required',
         ]);
 
-        $target_two = new Target();
-        $actual_two = new Actual();
-        $user = Auth::user();
+        Log::info(Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)->exists());
 
-        // if Target and Actual exists, update
-        if(Target::where('user_id', $user->id)->exists() and Actual::where('user_id', $user->id)->exists()){
-            Log::info("Hello, I am here to update");
-            $this->updateActualAndTargetMarks();
-            return redirect()->back()->with('success', 'Marks Updated Successfully');
+        if (Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)) {
+            $this->updateMarks();
+        } else {
+            Log::info('inserting marks');
+            // if Target and Actual does not exist, create new record
+            $subjectId = Subject::where('subject_name', $this->state_two['subject_name_two'])->first()->id;
+            if (Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)) {
+                Mark::create([
+                    'user_id' => Auth::user()->id,
+                    'subject_id' => $subjectId,
+                    'target_mark' => $this->state_two['target_mark_two'],
+                    'actual_mark' => $this->state_two['actual_mark_two'],
+                    'compulsory_subject_number' => $this->state_two['compulsory_subject_number_two'],
+                    'deviation' => $this->state_two['target_mark_two'] - $this->state_two['actual_mark_two'],
+                ]);
+            }
         }
-
-        Log::info('user', ['user'=>$user]);
-
-        $subject = Subject::where('subject_name', $this->state_two['subject_name_two'])->first();
-
-
-        $target_two->user_id = $user->id;
-        $target_two->subject_id = $subject->id;
-        $target_two->Paper_one = $this->state_two['paper_one_target_two'];
-        $target_two->Paper_two = $this->state_two['paper_two_target_two'];
-        $target_two->Paper_three = $this->state_two['paper_three_target_two'];
-
-        $actual_two->user_id = $user->id;
-        $actual_two->subject_id = $subject->id;
-        $actual_two->Paper_one = $this->state_two['paper_one_actual_two'];
-        $actual_two->Paper_two = $this->state_two['paper_two_actual_two'];
-        $actual_two->Paper_three = $this->state_two['paper_three_actual_two'];
-
-
-        $target_two->save();
-        $actual_two->save();
-
-        return redirect('/set-goals')->with('success', 'Marks Added Successfully');
-
-
     }
 
 
-    // update the marks
-    public function updateActualAndTargetMarks(){
+    // update marks
+    public function updateMarks()
+    {
+        $subjectId = Subject::where('subject_name', $this->state_two['subject_name_two'])->first()->id;
+        $target = Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number_two', 2)->first();
+        // log::info($target);
+        Log::info($target);
 
-        $user = Auth::user();
-        Log::info('user', ['user'=>$user]);
-        $target_two = Target::where('user_id', $user->id)->first();
-        // $actual_two = new Actual();
-        $subject = Subject::where('subject_name', $this->state_two['subject_name_two'])->first();
-
-        Log::info('target', ['Target'=>$target_two]);
-
-        Log::info('Subject', ['Subjects'=>$subject]);
-
-        Target::where('user_id', $user->id)->update([
-            'Paper_one' => $this->state_two['paper_one_target_two'],
-            'Paper_two' => $this->state_two['paper_two_target_two'],
-            'Paper_three' => $this->state_two['paper_three_target_two'],
-            'subject_id' => $subject->id,
-        ]);
-
-        Actual::where('user_id', $user->id)->update([
-            'Paper_one' => $this->state_two['paper_one_actual_two'],
-            'Paper_two' => $this->state_two['paper_two_actual_two'],
-            'Paper_three' => $this->state_two['paper_three_actual_two'],
-            'subject_id' => $subject->id,
-        ]);
-
-        // $target_two->Paper_one = $this->state_two['paper_one_target_two'];
-        // $target_two->Paper_two = $this->state_two['paper_two_target_two'];
-        // $target_two->Paper_three = $this->state_two['paper_three_target_two'];
-        // $target_two->user_id = $user->id;
-        // $target_two->subject_id = $subject->id;
-
-        // $actual_two->Paper_one = $this->state_two['paper_one_actual_two'];
-        // $actual_two->Paper_two = $this->state_two['paper_two_actual_two'];
-        // $actual_two->Paper_three = $this->state_two['paper_three_actual_two'];
-        // $actual_two->user_id = $user->id;
-        // $actual_two->subject_id = $subject->id;
-
-        // $target_two->save();
-        // $actual_two->save();
-
-
+        if ($target) {
+            $target->update([
+                'user_id' => Auth::user()->id,
+                'subject_id' => $subjectId,
+                'target_mark' => $this->state_two['target_mark_two'],
+                'actual_mark' => $this->state_two['actual_mark_two'],
+                'compulsory_subject_number' => $this->state_two['compulsory_subject_number_two'],
+                'deviation' => $this->state_two['target_mark_two'] - $this->state_two['actual_mark_two'],
+            ], ['id' => $target->mark_id]);
+        }
     }
+
+
+
+
+
+
+
 
 
     public function render()

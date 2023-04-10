@@ -16,6 +16,10 @@
 
                 <x-jet-section-border />
 
+                @livewire('goal-set-form')
+
+                <x-jet-section-border />
+
 
 
                 {{-- <div class="mt-10 sm:mt-0">

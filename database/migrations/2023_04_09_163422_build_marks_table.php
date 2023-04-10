@@ -13,17 +13,16 @@ class BuildMarksTable extends Migration
      */
     public function up()
     {
-
         Schema::create('marks', function (Blueprint $table) {
-            $table->bigIncrements('mark_id');
+            $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('paper_id')->constrained('papers', 'paper_id')->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
+            $table->integer('compulsory_subject_number');
             $table->integer('actual_mark');
             $table->integer('target_mark');
             $table->decimal('deviation', 5, 2);
             $table->timestamps();
         });
-
 
     }
 
@@ -34,7 +33,8 @@ class BuildMarksTable extends Migration
      */
     public function down()
     {
-        //
         Schema::dropIfExists('marks');
     }
 }
+
+

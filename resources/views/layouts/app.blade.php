@@ -18,6 +18,7 @@
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="{{ asset('goal-set.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     @stack('scripts')
