@@ -16,9 +16,11 @@
 
                 <x-jet-section-border />
 
-                @livewire('goal-set-form')
+                @livewire('compulsory-subject-three')
 
                 <x-jet-section-border />
+
+
 
 
 

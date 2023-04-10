@@ -28,7 +28,7 @@ class CompulsorySubjectTwo extends Component
         $this->state_two['compulsory_subject_number_two'] = 2;
 
         // if Target and Actual exists, update $state with data from database
-        if (Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)) {
+        if (Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)->exists()) {
             $this->state_two['compulsory_subject_number'] = 2;
             // find the subject id of the first compulsory subject
             $targetSubjectId = Mark::where('user_id', Auth::user()->id)->where('compulsory_subject_number', 2)->first()->subject_id;
